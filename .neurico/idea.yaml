@@ -1,0 +1,55 @@
+idea:
+  title: Formal Proof of Gauss's Summation Formula in Lean 4
+  domain: mathematics_lean
+  hypothesis: 'For all natural numbers n, the sum of the first n natural numbers
+
+    satisfies: 1 + 2 + ... + n = n * (n + 1) / 2.
+
+    This classical identity can be formally verified in Lean 4 using
+
+    Mathlib tactics, with both an inductive proof and a direct algebraic proof.
+
+    '
+  background:
+    description: 'Gauss''s summation formula is one of the most fundamental identities
+
+      in mathematics. Formally verifying it in Lean 4 exercises the core
+
+      Mathlib tactic toolkit: induction, ring, omega, and simp.
+
+      This makes it an ideal first target for the mathematics_lean pipeline.
+
+      '
+  methodology:
+    approach: Formal proof in Lean 4 using Mathlib tactics
+    steps:
+    - Define the sum function recursively in Lean 4
+    - 'State the main theorem: Finset.sum id = n * (n + 1) / 2'
+    - Prove by induction on n using the induction tactic
+    - Verify the algebraic step with ring
+    - Add a second proof using Mathlib's Finset.sum_range_id lemma
+    - Run lake build to confirm all proofs compile with no sorry
+  constraints:
+    compute: cpu_only
+    time_limit: 3600
+    memory: 8GB
+  expected_outputs:
+  - type: proof
+    format: markdown
+    description: Complete Lean 4 proof with no sorry, verified by lake build
+  evaluation_criteria:
+  - lake build exits 0 with no sorry in any .lean file
+  - Main theorem is stated over natural numbers
+  - At least one proof by induction is included
+  - All proof steps compile cleanly with Mathlib tactics
+  metadata:
+    author: neurico
+    tags:
+    - number-theory
+    - lean4
+    - mathlib
+    - induction
+    priority: medium
+    estimated_duration: 1 hour
+    github_repo_name: gauss-summation-proof-87c3-claude
+    github_repo_url: https://github.com/AndrewRqy/gauss-summation-proof-87c3-claude
